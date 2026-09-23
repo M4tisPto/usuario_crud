@@ -5,24 +5,25 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema login_usuario
+-- Schema usuario
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema login_usuario
+-- Schema usuario
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `login_usuario` DEFAULT CHARACTER SET utf8 ;
-USE `login_usuario` ;
+CREATE SCHEMA IF NOT EXISTS `usuario` DEFAULT CHARACTER SET utf8 ;
+USE `usuario` ;
 
 -- -----------------------------------------------------
--- Table `login_usuario`.`usuarios`
+-- Table `usuario`.`usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `login_usuario`.`usuarios` (
+CREATE TABLE IF NOT EXISTS `usuario`.`usuarios` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   `apellido` VARCHAR(45) NULL,
-  `created_at` VARCHAR(45) NULL,
-  `updated_at` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `created_at` DATETIME NULL,
+  `updated_at` DATETIME NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
