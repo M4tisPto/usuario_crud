@@ -30,6 +30,7 @@ def borrar_usuario(id):
 @app.route("/registrar_usuario", methods=["POST"])
 def registrar_usuario():
     datos = {
+
         "nombre": request.form["nombre"],
         "apellido": request.form["apellido"],
         "email": request.form["email"]
@@ -38,24 +39,33 @@ def registrar_usuario():
     Usuario.save(datos)
     return redirect("/usuarios")
 
-@app.route("/usuarios/<id:id>")
-def ver_usuario():
-    pass
+@app.route("/usuarios/<int:id>")
+def ver_usuario(id):
+    datos = {
+        "id": id
+    }
+    usuario = Usuario.get_one(datos)
+    return render_template("ver_usuario.html", un_usuario = usuario)
 
-@app.route("/actualizar_usuario", methods= ["POST"])
+@app.route("/usuarios/editar/<int:id>")
+def editar_usuario(id):
+    datos = {
+        "id": id
+    }
+    usuario = Usuario.get_one(datos)
+    return render_template("editar_usuario.html", un_usuario = usuario)
+
+@app.route("/actualizar_usuario", methods=["POST"])
 def actualizar_usuario():
     datos = {
+        "id": request.form["id"],
         "nombre": request.form["nombre"],
         "apellido": request.form["apellido"],
         "email": request.form["email"]
     }
-
     Usuario.update_data(datos)
     return redirect("/usuarios")
 
-    # si, mi tabla de base de datos es muy simple xd
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-# this for now

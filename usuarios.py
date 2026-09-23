@@ -31,3 +31,7 @@ class Usuario:
     def delete_user(cls, data):
         query = "DELETE FROM usuarios WHERE id = %(id)s;"
         return MySQLConnection('usuario').query_db(query, data)
+    @classmethod
+    def get_one(cls, data):
+        query = "SELECT * FROM usuarios WHERE id = %(id)s"
+        return MySQLConnection('usuario').query_db(query, data)

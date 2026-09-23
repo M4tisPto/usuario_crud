@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario</title>
+</head>
+<body>
+    {% for usuario in un_usuario %}
+    <header>
+        <h1>Editar usuario {{ usuario.id }}</h1>
+    </header>
+    <form action="/actualizar_usuario" method="POST">
+        <input type="hidden" name="id" value="{{ usuario.id }}">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="{{ usuario.nombre }}" required><br>
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" name="apellido" placeholder="{{ usuario.apellido }}" required><br>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="{{ usuario.email }}" required><br>
+        <input type="submit" value="Actualizar">
+    </form>
+    {% endfor %}
+</body>
+</html>
